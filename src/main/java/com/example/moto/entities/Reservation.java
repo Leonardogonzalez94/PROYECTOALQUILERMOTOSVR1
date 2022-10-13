@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "Reservation")
+@Table (name = "reservation")
 public class Reservation implements Serializable  {
     
     @Id
@@ -32,9 +32,7 @@ public class Reservation implements Serializable  {
     @JoinColumn(name = "clientId")
     @JsonIgnoreProperties({"messages","reservations"})
     private Client client;
-    
-    
-  
+
     public Integer getIdReservation() {
         return idReservation;
     }
@@ -92,7 +90,7 @@ public class Reservation implements Serializable  {
     }
 
     
-    
-   
+ 
 }
+   
 

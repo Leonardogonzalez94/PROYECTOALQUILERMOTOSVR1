@@ -12,21 +12,21 @@ import org.springframework.stereotype.Repository;
 public class ProductRepository {
     
     @Autowired
-    private ProductCrudRepository productCrudRepository;
+    private ProductCrudRepository  extensionesCrud;
     
     public List<Product> getAll(){
-        return (List<Product>) productCrudRepository.findAll();
+        return (List<Product>)  extensionesCrud.findAll();
     }
     
     public Optional<Product> getProduct(int id){
-       return productCrudRepository.findById(id);
+       return  extensionesCrud.findById(id);
     }
  
     public Product save(Product p){
-        return productCrudRepository.save(p);
+        return  extensionesCrud.save(p);
     }
     
     public void delete(Product p) {
-        productCrudRepository.delete(p);
+         extensionesCrud.delete(p);
     }
 }

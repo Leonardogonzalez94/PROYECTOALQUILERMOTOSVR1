@@ -12,21 +12,21 @@ import org.springframework.stereotype.Repository;
 public class CategoryRepository {
     
     @Autowired
-    private CategoryCrudRepository categoryCrudRepository;
+    private CategoryCrudRepository extensionesCrud;
     
     public List<Category> getAll(){
-        return (List<Category>) categoryCrudRepository.findAll();
+        return (List<Category>) extensionesCrud.findAll();
     }
     
     public Optional<Category> getCategory(int id){
-        return categoryCrudRepository.findById(id);
+        return extensionesCrud.findById(id);
     }
     
     public Category save(Category c){
-        return categoryCrudRepository.save(c);
+        return extensionesCrud.save(c);
     }
     
     public void delete(Category c){
-        categoryCrudRepository.delete(c);
+        extensionesCrud.delete(c);
     }
 }

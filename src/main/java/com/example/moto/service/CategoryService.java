@@ -26,10 +26,10 @@ public class CategoryService {
             return categoryRepository.save(p);
         }else{
             Optional<Category> e = categoryRepository.getCategory(p.getId());
-            if (e.isPresent()){
-                return p;
-            }else{
+            if (e.isEmpty()){
                 return categoryRepository.save(p);
+            }else{
+                return p;
             }
          }
         
@@ -55,15 +55,22 @@ public class CategoryService {
         }
     }
     
-    public boolean delete (int id){
-        boolean flag=false;
-        Optional<Category> p = categoryRepository.getCategory(id);
-        if(p.isPresent()){
-            categoryRepository.delete(p.get());
-            flag = true;
-        }
+    //public boolean delete (int id){
+      //  boolean flag=false;
+        //Optional<Category> p = categoryRepository.getCategory(id);
+        //if(p.isPresent()){
+          //  categoryRepository.delete(p.get());
+           // flag = true;
+       // }
                 
-        return flag;       
+        //return flag;       
+    //}
+     public boolean deleteCategory(int id){
+        Boolean d = getCategory(id).map(category -> {
+            categoryRepository.delete(category);
+            return true;
+        }).orElse(false);
+        return d;
     }
     
 }

@@ -12,24 +12,24 @@ import org.springframework.stereotype.Repository;
 public class MotorbikeRepository {
     
     @Autowired
-    private MotorbikeCrudRepository motorbikeCrudRepository;
+    private MotorbikeCrudRepository  extensionesCrud;
     
     public List<Motorbike> getAll(){
-        return (List<Motorbike>) motorbikeCrudRepository.findAll();
+        return (List<Motorbike>)  extensionesCrud.findAll();
         
     }
     
     public Optional<Motorbike> getMotorbike(int id){
-       return motorbikeCrudRepository.findById(id);
+       return  extensionesCrud.findById(id);
     }
   
    
     public Motorbike save(Motorbike p){
-        return motorbikeCrudRepository.save(p);
+        return  extensionesCrud.save(p);
     }
     
     public void delete(Motorbike p) {
-        motorbikeCrudRepository.delete(p);
+        extensionesCrud.delete(p);
     }
     
 }

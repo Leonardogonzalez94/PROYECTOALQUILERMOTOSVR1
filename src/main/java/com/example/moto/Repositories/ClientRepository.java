@@ -13,15 +13,15 @@ import org.springframework.stereotype.Repository;
 public class ClientRepository {
     
     @Autowired
-    private ClientCrudRepository clientCrudRepository;
+    private ClientCrudRepository extensionesCrud;
     
     public List<Client> getAll(){
-        return (List<Client>) clientCrudRepository.findAll();
+        return (List<Client>) extensionesCrud.findAll();
         
     }
     
     public Optional<Client> getClient(int id){
-       return clientCrudRepository.findById(id);
+       return extensionesCrud.findById(id);
     }
     /**
      *
@@ -30,11 +30,14 @@ public class ClientRepository {
      */
    
     public Client save(Client p){
-        return clientCrudRepository.save(p);
+        return extensionesCrud.save(p);
     }
     
     public void delete(Client p) {
-        clientCrudRepository.delete(p);
+        extensionesCrud.delete(p);
     }
+    
+      
+
     
 }

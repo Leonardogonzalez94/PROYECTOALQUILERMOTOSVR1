@@ -27,10 +27,10 @@ public class MotorbikeService {
             return motorbikeRepository.save(p);
         }else{
             Optional<Motorbike> e = motorbikeRepository.getMotorbike(p.getId());
-            if (e.isPresent()){
-                return p;
-            }else{
+            if (e.isEmpty()){
                 return motorbikeRepository.save(p);
+            }else{
+                return p;
             }
          }
         
@@ -65,15 +65,22 @@ public class MotorbikeService {
         }
     }
     
-    public boolean delete (int id){
-        boolean flag=false;
-        Optional<Motorbike> p = motorbikeRepository.getMotorbike(id);
-        if(p.isPresent()){
-            motorbikeRepository.delete(p.get());
-            flag = true;
-        }
+    //public boolean delete (int id){
+      //  boolean flag=false;
+       // Optional<Motorbike> p = motorbikeRepository.getMotorbike(id);
+       // if(p.isPresent()){
+         //   motorbikeRepository.delete(p.get());
+          //  flag = true;
+        //}
                 
-        return flag;       
+        //return flag;       
+    //}
+     public boolean deleteMotorbike(int id){
+        Boolean d = getMotorbike(id).map(motorbike -> {
+            motorbikeRepository.delete(motorbike);
+            return true;
+        }).orElse(false);
+        return d;
     }
     
     

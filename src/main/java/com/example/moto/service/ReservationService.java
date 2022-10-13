@@ -25,11 +25,11 @@ public class ReservationService {
         if (p.getIdReservation()==null){
             return reservationRepository.save(p);
         }else{
-            Optional<Reservation> reservation1 = reservationRepository.getReservation((int) p.getIdReservation());
-            if (reservation1.isPresent()){
-                return p;
-            }else{
+            Optional<Reservation> e = reservationRepository.getReservation((int) p.getIdReservation());
+            if (e.isEmpty()){
                 return reservationRepository.save(p);
+            }else{
+                return p;
             }
          }
         
@@ -61,16 +61,24 @@ public class ReservationService {
         }
     }
     
-    public boolean delete (int id){
-        boolean flag=false;
-        Optional<Reservation> p = reservationRepository.getReservation(id);
-        if(p.isPresent()){
-            reservationRepository.delete(p.get());
-            flag = true;
-        }
+    //public boolean delete (int id){
+      //  boolean flag=false;
+       // Optional<Reservation> p = reservationRepository.getReservation(id);
+       // if(p.isPresent()){
+         //   reservationRepository.delete(p.get());
+          //  flag = true;
+       // }
                 
-        return flag;       
-    }
+       // return flag;       
+    //}
     
+    public boolean deleteReservation(int id){
+        Boolean d = getReservation(id).map(reservation -> {
+            reservationRepository.delete(reservation);
+            return true;
+        }).orElse(false);
+        return d;
+    }
+
     
 }

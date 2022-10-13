@@ -12,23 +12,23 @@ import org.springframework.stereotype.Repository;
 public class MessageRepository {
     
     @Autowired
-    private MessageCrudRepository messageCrudRepository;
+    private MessageCrudRepository extensionesCrud;
     
     public List<Message> getAll(){
-        return (List<Message>) messageCrudRepository.findAll();
+        return (List<Message>) extensionesCrud.findAll();
     }
     
     public Optional<Message> getMessage(int id){
-       return messageCrudRepository.findById(id);
+       return extensionesCrud.findById(id);
     }
 
    
     public Message save(Message p){
-        return messageCrudRepository.save(p);
+        return extensionesCrud.save(p);
     }
     
     public void delete(Message p) {
-        messageCrudRepository.delete(p);
+        extensionesCrud.delete(p);
     }
     
 }

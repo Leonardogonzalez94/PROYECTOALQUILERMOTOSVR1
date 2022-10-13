@@ -12,27 +12,23 @@ import org.springframework.stereotype.Repository;
 public class ReservationRepository {
     
     @Autowired
-    private ReservationCrudRepository reservationCrudRepository;
+    private ReservationCrudRepository  extensionesCrud;
     
     public List<Reservation> getAll(){
-        return (List<Reservation>) reservationCrudRepository.findAll();
+        return (List<Reservation>)  extensionesCrud.findAll();
     }
     
     public Optional<Reservation> getReservation(int id){
-       return reservationCrudRepository.findById(id);
+       return  extensionesCrud.findById(id);
     }
-    /**
-     *
-     * @param 
-     * @return
-     */
-   
+    
+  
     public Reservation save(Reservation p){
-        return reservationCrudRepository.save(p);
+        return  extensionesCrud.save(p);
     }
     
     public void delete(Reservation p) {
-        reservationCrudRepository.delete(p);
+         extensionesCrud.delete(p);
     }
    
 }

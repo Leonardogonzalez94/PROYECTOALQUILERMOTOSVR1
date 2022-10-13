@@ -1,6 +1,7 @@
 
 package com.example.moto.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+//
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "motorbike")
-public class Motorbike implements Serializable {
+public class Motorbike implements Serializable{
     
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
