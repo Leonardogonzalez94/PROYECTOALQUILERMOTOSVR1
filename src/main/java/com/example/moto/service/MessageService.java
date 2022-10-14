@@ -37,14 +37,13 @@ public class MessageService {
          }
         
     }
+     
+     
     public Message update(Message p){
         if (p.getIdMessage()!=null){
-            Optional <Message> q =messageRepository.getMessage((int) p.getIdMessage());
-            if(q.isPresent()){
-                if (p.getIdMessage()!=null){
-                    q.get().setIdMessage(p.getIdMessage());
-                }
-                if (p.getMessageText()!=null){
+            Optional <Message> q =messageRepository.getMessage(p.getIdMessage());
+            if(!q.isPresent()){  
+              if (p.getMessageText()!=null){
                     q.get().setMessageText(p.getMessageText());
                 }
                 messageRepository.save(q.get());

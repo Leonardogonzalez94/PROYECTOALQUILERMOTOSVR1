@@ -37,20 +37,18 @@ public class ReservationService {
     
     public Reservation update(Reservation p){
         if (p.getIdReservation()!=null){
-            Optional <Reservation> q =reservationRepository.getReservation((int) p.getIdReservation());
-            if(q.isPresent()){
+            Optional <Reservation> q =reservationRepository.getReservation(p.getIdReservation());
+            if(!q.isPresent()){
                 if (p.getStartDate()!=null){
                     q.get().setStartDate(p.getStartDate());
+                }
+                 if (p.getDevolutionDate()!=null){
+                    q.get().setDevolutionDate(p.getDevolutionDate());
                 }
                 if (p.getStatus()!=null){
                     q.get().setStatus(p.getStatus());
                 }
-                if (p.getDevolutionDate()!=null){
-                    q.get().setDevolutionDate(p.getDevolutionDate());
-                }
-                if (p.getScore()!=null){
-                    q.get().setScore(p.getScore());
-                }
+                
                 reservationRepository.save(q.get());
                 return q.get();
             }else{

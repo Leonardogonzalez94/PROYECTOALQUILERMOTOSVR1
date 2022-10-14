@@ -39,7 +39,7 @@ public class MotorbikeService {
     public Motorbike update(Motorbike p){
         if (p.getId()!=null){
             Optional <Motorbike> q =motorbikeRepository.getMotorbike(p.getId());
-            if(q.isPresent()){
+            if(!q.isPresent()){
                 if (p.getName()!=null){
                     q.get().setName(p.getName());
                 }
