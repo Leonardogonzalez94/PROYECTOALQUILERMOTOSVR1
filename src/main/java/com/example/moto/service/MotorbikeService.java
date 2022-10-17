@@ -36,35 +36,35 @@ public class MotorbikeService {
         
     }
     
-    public Motorbike update(Motorbike p){
-        if (p.getId()!=null){
-            Optional <Motorbike> q =motorbikeRepository.getMotorbike(p.getId());
-            if(!q.isPresent()){
-                if (p.getName()!=null){
-                    q.get().setName(p.getName());
+  
+      public Motorbike update(Motorbike motorbike){
+        if(motorbike.getId()!=null){
+            Optional<Motorbike> e= motorbikeRepository.getMotorbike(motorbike.getId());
+            if(!e.isPresent()){
+                if(motorbike.getName()!=null){
+                    e.get().setName(motorbike.getName());
                 }
-                if (p.getYear()!=null){
-                    q.get().setYear(p.getYear());
+                if(motorbike.getYear()!=null){
+                    e.get().setYear(motorbike.getYear());
                 }
-                if (p.getBrand()!=null){
-                    q.get().setBrand(p.getBrand());
+                if(motorbike.getBrand()!=null){
+                    e.get().setBrand(motorbike.getBrand());
                 }
-                if (p.getDescription()!=null){
-                    q.get().setDescription(p.getDescription());
+                if(motorbike.getDescription()!=null){
+                    e.get().setDescription(motorbike.getDescription());
                 }
-                if (p.getCategory()!=null){
-                    q.get().setCategory(p.getCategory());
+                if(motorbike.getCategory()!=null){
+                    e.get().setCategory(motorbike.getCategory());
                 }
-                motorbikeRepository.save(q.get());
-                return q.get();
+                motorbikeRepository.save(e.get());
+                return e.get();
             }else{
-                return p;
+                return motorbike;
             }
         }else{
-            return p;
+            return motorbike;
         }
     }
-    
     //public boolean delete (int id){
       //  boolean flag=false;
        // Optional<Motorbike> p = motorbikeRepository.getMotorbike(id);

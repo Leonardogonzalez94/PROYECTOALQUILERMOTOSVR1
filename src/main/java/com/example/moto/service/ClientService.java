@@ -35,32 +35,29 @@ public class ClientService {
         
     }
     
-    public Client update(Client p){
-        if (p.getIdClient()!=null){
-            Optional <Client> q =clientRepository.getClient(p.getIdClient());
-            if(!q.isPresent()){
-               
-                if (p.getName()!=null){
-                    q.get().setName(p.getName());
+    public Client update(Client client){
+        if(client.getIdClient()!=null){
+            Optional<Client> e= clientRepository.getClient(client.getIdClient());
+            if(!e.isPresent()){
+                if(client.getName()!=null){
+                    e.get().setName(client.getName());
                 }
-                if (p.getEmail()!=null){
-                    q.get().setEmail(p.getEmail());
+                if(client.getAge()!=null){
+                    e.get().setAge(client.getAge());
                 }
-                if (p.getAge()!=null){
-                    q.get().setAge(p.getAge());
+                if(client.getPassword()!=null){
+                    e.get().setPassword(client.getPassword());
                 }
-                if (p.getPassword()!=null){
-                    q.get().setPassword(p.getPassword());
-                }
-                clientRepository.save(q.get());
-                return q.get();
+                clientRepository.save(e.get());
+                return e.get();
             }else{
-                return p;
+                return client;
             }
         }else{
-            return p;
+            return client;
         }
     }
+
     
 //    public boolean delete (int id){
    //   boolean flag=false;
