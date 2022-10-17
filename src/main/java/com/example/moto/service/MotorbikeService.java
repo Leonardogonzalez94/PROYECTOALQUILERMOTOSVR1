@@ -27,7 +27,7 @@ public class MotorbikeService {
             return motorbikeRepository.save(p);
         }else{
             Optional<Motorbike> e = motorbikeRepository.getMotorbike(p.getId());
-            if (e.isPresent()){
+            if (e.isEmpty()){
                 return motorbikeRepository.save(p);
             }else{
                 return p;
@@ -39,7 +39,7 @@ public class MotorbikeService {
     public Motorbike update(Motorbike p){
         if (p.getId()!=null){
             Optional <Motorbike> q =motorbikeRepository.getMotorbike(p.getId());
-            if(!q.isPresent()){
+            if(!q.isEmpty()){
                 if (p.getName()!=null){
                     q.get().setName(p.getName());
                 }
