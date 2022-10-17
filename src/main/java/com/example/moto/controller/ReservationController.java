@@ -1,7 +1,9 @@
 
 package com.example.moto.controller;
 import com.example.moto.entities.Client;
+import com.example.moto.Repositories.CountClient;
 import com.example.moto.entities.Reservation;
+import com.example.moto.Service.Status;
 import com.example.moto.service.ReservationService;
 import java.util.List;
 import java.util.Optional;
@@ -52,6 +54,20 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int gamaId){
         return reservationService.deleteReservation(gamaId);
+    }
+    @GetMapping("/report-clients")
+    public List<CountClient> getReservationsReportClient(){
+        return reservationService.getTopClients();
+    }
+    
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationsReportDates(@PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
+        return reservationService.informePeriodoTiempoReservas(dateOne,dateTwo);
+    }
+    
+     @GetMapping("/report-status")
+    public Status getReservationsStatusReport(){
+        return reservationService.getReservationStatusReport();
     }
     
 }
